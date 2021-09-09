@@ -1,6 +1,11 @@
+// iterating over an array with `for` -> for loops start from 0
+
 const packingList = ["bowls", "plates", "pots", "pans", "eating utensils", "glasses", "cups", "cooking utensils"];
+let i = 0
 
 console.log("Kitchen stuff to pack:");
-for (let i = 0; i < packingList.length; i++) {
+while (i < packingList.length) {
   console.log(packingList[i]);
+  i++;
 }
+
