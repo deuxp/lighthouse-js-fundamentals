@@ -91,31 +91,28 @@ const merge = (a, b, m) => {
 
 const merge = (a, b) => {
 
-  let answer = [];
-  let lowest = Infinity;
-  let lowestIndex = 0;
-  let mainList = a.concat(b);
-  let testCounter = 0
+  let sortedMergeList = [];
+  let mergedList = a.concat(b);
 
-  while (mainList.length >= 1) {
+  while (mergedList.length >= 1) {
+    let lowest = Infinity                      // init starting point of comparison for lowest number
+    let lowestIndex = 0;
 
-    for (let i = 0; i < mainList.length; i++) {
-      const num = mainList[i];
+    for (let i = 0; i < mergedList.length; i++) {
+      const num = mergedList[i];
 
       if (num <= lowest) {
         lowest = num;
         lowestIndex = i;
       }
     }
-
-    answer.push(mainList.splice(lowestIndex, lowestIndex + 1))
-    lowest = Infinity
-    testCounter += 1
-    console.log(testCounter);
+    let popNpush = mergedList.splice(lowestIndex, 1)
+    sortedMergeList.push(popNpush[0])
   }
-  return answer
+  return sortedMergeList
 }
 
-// NEEDS A DEBUGGING, BADLY !!!
 
 console.log(merge([4, 5, 6], [1, 2, 3, 4]), "=?", [1, 2, 3, 4, 4, 5, 6]);
+console.log(merge([4], [2, 5, 8]), "=?", [2, 4, 5, 8]);
+console.log(merge([1, 2, 6], []), "=?", [1, 2, 6]);
